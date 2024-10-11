@@ -22,7 +22,7 @@ public class Product {
     private Long pno;
 
     private String pname;
-    private String price;
+    private int price;
 
     @ElementCollection
     @CollectionTable(name = "tbl_product_img")
