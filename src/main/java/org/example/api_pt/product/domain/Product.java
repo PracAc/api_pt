@@ -1,10 +1,7 @@
 package org.example.api_pt.product.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -15,6 +12,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@ToString(exclude = "tags")
 public class Product {
 
     @Id
@@ -23,6 +21,23 @@ public class Product {
 
     private String pname;
     private int price;
+
+    @ElementCollection
+    @CollectionTable(name = "tbl_product_tag")
+    @Builder.Default
+    private Set<String> tags = new HashSet<>();
+
+    public void addTag(String tag) {
+        tags.add(tag);
+    }
+
+    public void removeTag(String tag) {
+        tags.remove(tag);
+    }
+
+    public void clearTag() {
+        tags.clear();
+    }
 
     @ElementCollection
     @CollectionTable(name = "tbl_product_img")
