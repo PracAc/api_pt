@@ -33,4 +33,9 @@ public class Product {
         this.images = images;
     }
 
+    public void addFile(String filename) {
+        ContentImage image = new ContentImage(images.size(), filename);
+        this.images.add(image);
+    }
+
 }
