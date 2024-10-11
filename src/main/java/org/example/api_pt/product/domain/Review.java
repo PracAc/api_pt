@@ -20,7 +20,10 @@ public class Review {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rno;
+
     private String content;
+
+    private Long score;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;

@@ -27,7 +27,7 @@ public class ProductTests {
     @Transactional
     public void testInsert() {
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 50; i++) {
 
 
         Set<ContentImage> productImages = new HashSet<>();
@@ -41,7 +41,11 @@ public class ProductTests {
                 .images(productImages)
                 .build();
 
-        productRepository.save(product);
+            product.addTag("AAA");
+            product.addTag("BBB");
+            product.addTag("CCC");
+
+            productRepository.save(product);
         }
 
     }
